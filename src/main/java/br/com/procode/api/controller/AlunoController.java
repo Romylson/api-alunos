@@ -1,6 +1,9 @@
 package br.com.procode.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import br.com.procode.api.dto.AlunoDto;
 import br.com.procode.api.entity.Aluno;
 import br.com.procode.api.service.AlunoService;
 
@@ -14,7 +17,8 @@ import java.util.List;
 	    private AlunoService service;
 
 	    @PostMapping(value="/inserir")
-	    public Aluno inserir(@RequestBody Aluno aluno) {
+	    @ResponseStatus(code=HttpStatus.CREATED)
+	    public Aluno inserir(@RequestBody AlunoDto aluno) {
 	           return service.inserir(aluno);
 	    }
 	    @GetMapping(value="/listar")
