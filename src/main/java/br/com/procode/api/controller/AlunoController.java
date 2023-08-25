@@ -34,8 +34,8 @@ import java.util.List;
 	    }
 
 	    @PutMapping(value="/atualizar/{id}")
-	    public Aluno atualizar(@RequestBody Aluno aluno) {
-	    	   return service.atualizar(aluno);
+	    public Aluno atualizar(@PathVariable Long id, @RequestBody AlunoDto aluno) {
+	    	   return service.atualizar(id,aluno);
 	    }
 
 	    @DeleteMapping(value="/deletar/{id}")

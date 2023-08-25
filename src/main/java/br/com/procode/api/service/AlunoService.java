@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import br.com.procode.api.dto.AlunoDto;
 import br.com.procode.api.entity.Aluno;
 import br.com.procode.api.entity.Turma;
+import br.com.procode.api.exception.AlunoNotFoundException;
 import br.com.procode.api.repository.AlunoRepository;
 import br.com.procode.api.repository.TurmaRepository;
 
@@ -45,9 +46,14 @@ public class AlunoService {
         return null;
     }
 
-    public Aluno atualizar(Aluno aluno) {
-           return repository.save(aluno);
-       
+    public Aluno atualizar(Long id,AlunoDto alunoDto) {
+    	Aluno aluno = repository.findById(id)
+                .orElseThrow(() -> new AlunoNotFoundException(id));
+
+        aluno.setNome(alunoDto.getNome());
+        aluno.setCpf(alunoDto.getCpf());
+
+        return repository.save(aluno);
     }
     public void deletar(Long id) {
     	repository.deleteById(id); ;
