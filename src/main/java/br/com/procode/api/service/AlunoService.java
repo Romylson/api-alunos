@@ -1,5 +1,6 @@
 package br.com.procode.api.service;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import br.com.procode.api.dto.AlunoDto;
@@ -11,8 +12,8 @@ import br.com.procode.api.repository.TurmaRepository;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
+
 public class AlunoService {
 	@Autowired
     private  AlunoRepository repository;
