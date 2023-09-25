@@ -1,12 +1,16 @@
 package br.com.procode.api.dto;
 
 import br.com.procode.api.entity.Aluno;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
 public class AlunoDto {
-	
+	@Size(min=10, message="O nome deve ter pelo menos 10 caracteres.")
 	private String nome;
+	
+	@Pattern(regexp ="^[0-9]{11}$", message="O CPF deve conter exatamente 11 caracteres(Apenas números).")
 	private String cpf;
 	
 
